@@ -2,23 +2,23 @@
 
 struct queue_node
 {
-  void*         val;
-  struct node*  next;
-  struct node*  prev;
+  void*               val;
+  struct queue_node*  next;
+  struct queue_node*  prev;
 };
 
 struct queue
 {
-  unsigned      size;
-  struct node*  head;
-  struct node*  tail;
+  unsigned            size;
+  struct queue_node*  head;
+  struct queue_node*  tail;
 };
 
 void initQueue(struct queue* q);
 
-int isQueueEmpty(struct queue* q);
-
 unsigned queueSize(struct queue* q);
+
+int isQueueEmpty(struct queue* q);
 
 void enqueue(struct queue* q, struct queue_node* n);
 
