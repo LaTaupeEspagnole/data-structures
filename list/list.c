@@ -22,7 +22,7 @@ int list_isEmpty(struct list* list)
 void list_append(struct list* list, struct list_node* node)
 {
   list->size = list->size + 1;
-  if (list->size == 0)
+  if (list->size == 1)
   {
     list->first = node;
     node->next = node;
@@ -102,7 +102,7 @@ int list_insert(struct list* list, struct list_node* node, unsigned index)
     list_append(list, node);
   else
   {
-    unsigned iter = 1;
+    unsigned iter = 0;
     struct list_node* pos = list->first;
     while (iter < index)
     {
@@ -130,7 +130,7 @@ struct list_node* list_remove(struct list* list, unsigned index)
   if (index == list->size - 1)
     return list_popright(list);
 
-  unsigned iter = 1;
+  unsigned iter = 0;
   struct list_node* pos = list->first;
   while (iter < index)
   {
