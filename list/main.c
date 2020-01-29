@@ -103,6 +103,12 @@ int main()
   else
     printf("no\n");
 
+  printf("getting at index 0 (should be 1) : %d\n", *(int*)(list_get(&list, 0)->val));
+  printf("getting at index 0 (should be 2) : %d\n", *(int*)(list_get(&list, 1)->val));
+  printf("getting at index 0 (should be 0) : %d\n", *(int*)(list_get(&list, 2)->val));
+  printf("getting at index 0 (should be 3) : %d\n", *(int*)(list_get(&list, 3)->val));
+
+  printf("Size of the list (should be 4) : %u\n", list_size(&list));
 
   printf("removing list index 0 (should be 1) : %d\n", *(int*)(list_remove(&list, 0)->val));
   printf("removing list index 1 (should be 0) : %d\n", *(int*)(list_remove(&list, 1)->val));

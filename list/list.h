@@ -26,6 +26,8 @@ struct list_node* list_popleft(struct list* list);
 
 struct list_node* list_popright(struct list* list);
 
+struct list_node* list_get(struct list* list, unsigned index);
+
 int list_insert(struct list* list, struct list_node* node, unsigned index);
 
 struct list_node* list_remove(struct list* list, unsigned index);
