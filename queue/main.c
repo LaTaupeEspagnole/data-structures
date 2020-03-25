@@ -29,87 +29,87 @@ int main()
 
   printf("Initialising queue...\n");
   struct queue queue;
-  initQueue(&queue);
+  queue_init(&queue);
 
-  printf("Size queue (should be 0) : %u\n", queueSize(&queue));
+  printf("Size queue (should be 0) : %u\n", queue_size(&queue));
 
   printf("Is queue empty (should be yes) : ");
-  if (isQueueEmpty(&queue))
+  if (queue_isEmpty(&queue))
     printf("yes\n");
   else
     printf("no\n");
 
   printf("Filling queue...\n");
-  enqueue(&queue, node0);
-  enqueue(&queue, node1);
-  enqueue(&queue, node2);
-  enqueue(&queue, node3);
-  enqueue(&queue, node4);
-  enqueue(&queue, node5);
+  queue_enqueue(&queue, node0);
+  queue_enqueue(&queue, node1);
+  queue_enqueue(&queue, node2);
+  queue_enqueue(&queue, node3);
+  queue_enqueue(&queue, node4);
+  queue_enqueue(&queue, node5);
 
-  printf("Size queue (should be 6) : %u\n", queueSize(&queue));
+  printf("Size queue (should be 6) : %u\n", queue_size(&queue));
 
   printf("Is queue empty (should be no) : ");
-  if (isQueueEmpty(&queue))
+  if (queue_isEmpty(&queue))
     printf("yes\n");
   else
     printf("no\n");
 
   printf("Emptying queue...\n");
-  printf("Node0 poped : value = %d (should be 0)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node1 poped : value = %d (should be 1)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node2 poped : value = %d (should be 2)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node3 poped : value = %d (should be 3)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node4 poped : value = %d (should be 4)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node5 poped : value = %d (should be 5)\n", *(int*)(dequeue(&queue)->val));
+  printf("Node0 poped : value = %d (should be 0)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node1 poped : value = %d (should be 1)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node2 poped : value = %d (should be 2)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node3 poped : value = %d (should be 3)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node4 poped : value = %d (should be 4)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node5 poped : value = %d (should be 5)\n", *(int*)(queue_dequeue(&queue)->val));
   printf("Poping while empty (should return NULL) : ");
-  if (dequeue(&queue) == NULL)
+  if (queue_dequeue(&queue) == NULL)
     printf("NULL\n");
   else
     printf("NOT NULL\n");
 
-  printf("Size queue (should be 0) : %u\n", queueSize(&queue));
+  printf("Size queue (should be 0) : %u\n", queue_size(&queue));
 
   printf("Is queue empty (should be yes) : ");
-  if (isQueueEmpty(&queue))
+  if (queue_isEmpty(&queue))
     printf("yes\n");
   else
     printf("no\n");
 
   printf("Filling queue...\n");
-  enqueue(&queue, node0);
-  enqueue(&queue, node1);
-  enqueue(&queue, node2);
-  enqueue(&queue, node3);
-  enqueue(&queue, node4);
-  enqueue(&queue, node5);
+  queue_enqueue(&queue, node0);
+  queue_enqueue(&queue, node1);
+  queue_enqueue(&queue, node2);
+  queue_enqueue(&queue, node3);
+  queue_enqueue(&queue, node4);
+  queue_enqueue(&queue, node5);
 
-  printf("Size queue (should be 6) : %u\n", queueSize(&queue));
+  printf("Size queue (should be 6) : %u\n", queue_size(&queue));
 
   printf("Is queue empty (should be no) : ");
-  if (isQueueEmpty(&queue))
+  if (queue_isEmpty(&queue))
     printf("yes\n");
   else
     printf("no\n");
 
   printf("Emptying queue...\n");
-  printf("Node0 poped : value = %d (should be 0)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node1 poped : value = %d (should be 1)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node2 poped : value = %d (should be 2)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node3 poped : value = %d (should be 3)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node4 poped : value = %d (should be 4)\n", *(int*)(dequeue(&queue)->val));
-  printf("Node5 poped : value = %d (should be 5)\n", *(int*)(dequeue(&queue)->val));
+  printf("Node0 poped : value = %d (should be 0)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node1 poped : value = %d (should be 1)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node2 poped : value = %d (should be 2)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node3 poped : value = %d (should be 3)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node4 poped : value = %d (should be 4)\n", *(int*)(queue_dequeue(&queue)->val));
+  printf("Node5 poped : value = %d (should be 5)\n", *(int*)(queue_dequeue(&queue)->val));
 
   printf("Poping while empty (should return NULL) : ");
-  if (dequeue(&queue) == NULL)
+  if (queue_dequeue(&queue) == NULL)
     printf("NULL\n");
   else
     printf("NOT NULL\n");
 
-  printf("Size queue (should be 0) : %u\n", queueSize(&queue));
+  printf("Size queue (should be 0) : %u\n", queue_size(&queue));
 
   printf("Is queue empty (should be yes) : ");
-  if (isQueueEmpty(&queue))
+  if (queue_isEmpty(&queue))
     printf("yes\n");
   else
     printf("no\n");

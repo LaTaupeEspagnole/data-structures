@@ -14,12 +14,12 @@ struct queue
   struct queue_node*  tail;
 };
 
-void initQueue(struct queue* q);
+void queue_init(struct queue* q);
 
-unsigned queueSize(struct queue* q);
+unsigned queue_size(struct queue* q);
 
-int isQueueEmpty(struct queue* q);
+int queue_isEmpty(struct queue* q);
 
-void enqueue(struct queue* q, struct queue_node* n);
+void queue_enqueue(struct queue* q, struct queue_node* n);
 
-struct queue_node* dequeue(struct queue* q);
+struct queue_node* queue_dequeue(struct queue* q);
