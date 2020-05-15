@@ -1,0 +1,22 @@
+This project is an educational projet on making data structure in C. Your can
+find fully documented and explaned implementation on the basic data strucures.
+
+USAGE
+  make doc    : Generates the complete documentation of the project
+                The pdf documentation will be generated in ./latex/refman.pdf
+                The HTML documentation will be generated in the ./html folder
+
+  make test   : Complile and start the project test-suite
+
+
+
+CONTENT
+  ./Makefile      : General Makefile of the project
+  ./doc.doxygen   : Doxygen config file
+  include/        : Include files of the project
+  src/            : Source files of the project
+  test/           : Test source files of the project
+
+
+AUTHORS
+  Sébastien Goubeau (sebastien.goubeau@protonmail.com)

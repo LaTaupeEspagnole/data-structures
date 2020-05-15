@@ -20,6 +20,11 @@ all: test
 
 
 
+doc:
+	doxygen doc.doxygen
+	cd latex; make
+
+
 test: test-queue test-list test-stack test-alloc-list-string
 
 test-queue: ${OBJS_QUEUE} ${OBJS_QUEUE_TEST}
@@ -32,7 +37,10 @@ test-alloc-list-string: ${OBJS_LIST} ${OBJS_ALLOC_LIST_STRING} ${OBJS_ALLOC_LIST
 
 
 
-clean: clean-queue clean-list clean-stack clean-alloc-list-string
+clean: clean-doc clean-queue clean-list clean-stack clean-alloc-list-string
+
+clean-doc:
+	${RM} -r html latex
 
 clean-queue:
 	${RM} ${OBJS_QUEUE} ${OBJS_QUEUE_TEST} test-queue

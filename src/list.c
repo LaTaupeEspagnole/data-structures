@@ -54,7 +54,7 @@ void list_prepend(struct list* list, struct list_node* node)
   list->first = node;
 }
 
-struct list_node* list_hard_pop(struct list* list, struct list_node* node)
+struct list_node* list_hard_remove(struct list* list, struct list_node* node)
 {
   node->prev->next = node->next;
   node->next->prev = node->prev;
@@ -77,7 +77,7 @@ struct list_node* list_popleft(struct list* list)
 
   list->first = save->next;
 
-  return list_hard_pop(list, save);
+  return list_hard_remove(list, save);
 }
 
 struct list_node* list_popright(struct list* list)
@@ -88,7 +88,7 @@ struct list_node* list_popright(struct list* list)
   if (list->size == 1)
     return list_popleft(list);
 
-  return list_hard_pop(list, list->first->prev);
+  return list_hard_remove(list, list->first->prev);
 }
 
 struct list_node* list_get(struct list* list, unsigned index)
@@ -140,5 +140,5 @@ struct list_node* list_remove(struct list* list, unsigned index)
   if (index == list->size - 1)
     return list_popright(list);
 
-  return list_hard_pop(list, list_get(list, index));
+  return list_hard_remove(list, list_get(list, index));
 }
