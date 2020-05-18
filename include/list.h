@@ -11,73 +11,71 @@
 
 
 /**
- * \struct list_node
  * \brief Structure for a list node contaning the value and the next/prev node.
  */
 struct list_node
 {
-  void*             val;    /*!< pointer on the value */
-  struct list_node* next;   /*!< pointer on the next node */
-  struct list_node* prev;   /*!< pointer on the previous node */
+  void*             val;    /*!< pointer to the value */
+  struct list_node* next;   /*!< pointer to the next node */
+  struct list_node* prev;   /*!< pointer to the previous node */
 };
 
 /**
- * \struct list
  * \brief Structure for a list contaning le size and first element of the list.
  */
 struct list {
   unsigned          size;   /*!< size of the list */
-  struct list_node* first;  /*!< pointer on the first node */
+  struct list_node* first;  /*!< pointer to the first node of the list */
 };
 
 /**
- * \brief Initiates the **list** structure with default values.\n
- * **No allocation is done here.**
+ * \brief Initiate the **list** structure with default values\n
+ * **No allocation is done here**
  * \param list List structure
  */
 void list_init(struct list* list);
 
 /**
- * \brief Gets the size of the list
- * \param list List of which to get the size
+ * \brief Get the size of the list
+ * \param list List of which to get the size from
  * \return Size of the list **list**
  */
 unsigned list_size(struct list* list);
 
 /**
- * \brief Checks whether the list is empty
- * \param list List of which to check it's emptiness
- * \return true (1) if **list** is empty, false (0) otherwise
+ * \brief Check whether the list is empty
+ * \param list List of which to check emptiness
+ * \return true (1) if the **list** is empty, false (0) otherwise
  */
 int list_isEmpty(struct list* list);
 
 /**
- * \brief Appends a node to a list
+ * \brief Append a node to a list
  * \param list List to append from
- * \param node Node to append to the list
+ * \param node Node to append
  */
 void list_append(struct list* list, struct list_node* node);
 
 /**
- * \brief Prepends a node to a list
+ * \brief Prepend a node to a list
  * \param list List to prepend from
- * \param node Node to prepend to the list
+ * \param node Node to prepend
  */
 void list_prepend(struct list* list, struct list_node* node);
 
 /**
  * \brief Pop the left node of a list\n
- * **No free is done here.**
+ * **No free is done here**
  * \param list List from which to pop from
- * \return The just leftpoped node of the **list**
+ * \return The just leftpoped node
  */
 struct list_node* list_popleft(struct list* list);
 
 /**
  * \brief Pop the right node of a list\n
- * **No free is done here.**
+ * **No free is done here**
  * \param list List from which to pop from
- * \return The just rightpoped node of the **list**
+ * \return The just rightpoped node
  */
 struct list_node* list_popright(struct list* list);
 
@@ -101,7 +99,7 @@ int list_insert(struct list* list, struct list_node* node, unsigned index);
 
 /**
  * \brief Remove a node from a list\n
- * **No free is done here.**
+ * **No free is done here**
  * \param list List from which to remove from
  * \param index Index of the node to remove
  * \return The just removed node. The function returns NULL if the index is
