@@ -131,7 +131,7 @@ int list_insert(struct list* list, struct list_node* node, unsigned index)
 
 struct list_node* list_remove(struct list* list, unsigned index)
 {
-  if (list->size == 0 || index > list->size)
+  if (index >= list->size)
     return NULL;
 
   if (index == 0)
