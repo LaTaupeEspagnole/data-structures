@@ -11,7 +11,7 @@
 
 /**
  * \brief Structure for a queue_node contaning the value and the next/prev
- * node.
+ * node pointer.
  */
 struct queue_node
 {
@@ -63,6 +63,6 @@ void queue_enqueue(struct queue* q, struct queue_node* n);
  * \brief Dequeue a node from a queue\n
  * **No free is done here**
  * \param q Queue to dequeue from
- * \return The just dequeued node. Returns NULL if the queue is empty.
+ * \return The node that just been dequeued. Returns NULL if the queue is empty.
  */
 struct queue_node* queue_dequeue(struct queue* q);
