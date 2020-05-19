@@ -11,7 +11,8 @@
 
 
 /**
- * \brief Structure for a list node contaning the value and the next/prev node.
+ * \brief Structure for a list node contaning the value and the next/prev node
+ * pointer.
  */
 struct list_node
 {
@@ -67,7 +68,7 @@ void list_prepend(struct list* list, struct list_node* node);
  * \brief Pop the left node of a list\n
  * **No free is done here**
  * \param list List from which to pop from
- * \return The just leftpoped node
+ * \return The node that just been poped
  */
 struct list_node* list_popleft(struct list* list);
 
@@ -75,7 +76,7 @@ struct list_node* list_popleft(struct list* list);
  * \brief Pop the right node of a list\n
  * **No free is done here**
  * \param list List from which to pop from
- * \return The just rightpoped node
+ * \return The node that just been poped
  */
 struct list_node* list_popright(struct list* list);
 
@@ -102,7 +103,7 @@ int list_insert(struct list* list, struct list_node* node, unsigned index);
  * **No free is done here**
  * \param list List from which to remove from
  * \param index Index of the node to remove
- * \return The just removed node. The function returns NULL if the index is
+ * \return The node that just been removed. The function returns NULL if the index is
  * greater or equal to the list's size.
  */
 struct list_node* list_remove(struct list* list, unsigned index);
