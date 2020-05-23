@@ -3,9 +3,13 @@
 
 #include "queue.h"
 
-int main()
+#include "test-suite.h"
+
+struct test_rate test_queue()
 {
-  printf("Creating queue nodes...\n");
+
+  struct test_rate res = {0, 0};
+
   struct queue_node* node0 = malloc(sizeof(struct queue_node));
   struct queue_node* node1 = malloc(sizeof(struct queue_node));
   struct queue_node* node2 = malloc(sizeof(struct queue_node));
@@ -27,19 +31,12 @@ int main()
   node4->val = (void*)&four;
   node5->val = (void*)&five;
 
-  printf("Initialising queue...\n");
   struct queue queue;
   queue_init(&queue);
 
-  printf("Size queue (should be 0) : %u\n", queue_size(&queue));
+  test_assert(&res, "Queue size after init", queue_size(&queue) == 0);
+  test_assert(&res, "Queue is empty after init", queue_isEmpty(&queue));
 
-  printf("Is queue empty (should be yes) : ");
-  if (queue_isEmpty(&queue))
-    printf("yes\n");
-  else
-    printf("no\n");
-
-  printf("Filling queue...\n");
   queue_enqueue(&queue, node0);
   queue_enqueue(&queue, node1);
   queue_enqueue(&queue, node2);
@@ -47,74 +44,33 @@ int main()
   queue_enqueue(&queue, node4);
   queue_enqueue(&queue, node5);
 
-  printf("Size queue (should be 6) : %u\n", queue_size(&queue));
+  test_assert(&res, "Queue size after enqueue", queue_size(&queue) == 6);
+  test_assert(&res, "Queue is empty after enqueue", !queue_isEmpty(&queue));
 
-  printf("Is queue empty (should be no) : ");
-  if (queue_isEmpty(&queue))
-    printf("yes\n");
-  else
-    printf("no\n");
+  test_assert(&res, "Poping 1/6", *(int*)(queue_dequeue(&queue)->val) == 0);
+  test_assert(&res, "Poping 2/6", *(int*)(queue_dequeue(&queue)->val) == 1);
+  test_assert(&res, "Poping 3/6", *(int*)(queue_dequeue(&queue)->val) == 2);
+  test_assert(&res, "Poping 4/6", *(int*)(queue_dequeue(&queue)->val) == 3);
+  test_assert(&res, "Poping 5/6", *(int*)(queue_dequeue(&queue)->val) == 4);
+  test_assert(&res, "Poping 6/6", *(int*)(queue_dequeue(&queue)->val) == 5);
+  test_assert(&res, "Poping while empty queue", queue_dequeue(&queue) == NULL);
+  test_assert(&res, "Queue size after poping", queue_size(&queue) == 0);
+  test_assert(&res, "Queue is empty after poping", queue_isEmpty(&queue));
 
-  printf("Emptying queue...\n");
-  printf("Node0 poped : value = %d (should be 0)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node1 poped : value = %d (should be 1)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node2 poped : value = %d (should be 2)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node3 poped : value = %d (should be 3)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node4 poped : value = %d (should be 4)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node5 poped : value = %d (should be 5)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Poping while empty (should return NULL) : ");
-  if (queue_dequeue(&queue) == NULL)
-    printf("NULL\n");
-  else
-    printf("NOT NULL\n");
-
-  printf("Size queue (should be 0) : %u\n", queue_size(&queue));
-
-  printf("Is queue empty (should be yes) : ");
-  if (queue_isEmpty(&queue))
-    printf("yes\n");
-  else
-    printf("no\n");
-
-  printf("Filling queue...\n");
   queue_enqueue(&queue, node0);
   queue_enqueue(&queue, node1);
   queue_enqueue(&queue, node2);
-  queue_enqueue(&queue, node3);
-  queue_enqueue(&queue, node4);
-  queue_enqueue(&queue, node5);
 
-  printf("Size queue (should be 6) : %u\n", queue_size(&queue));
+  test_assert(&res, "Queue size after enqueue", queue_size(&queue) == 3);
+  test_assert(&res, "Queue is empty after enqueue", !queue_isEmpty(&queue));
 
-  printf("Is queue empty (should be no) : ");
-  if (queue_isEmpty(&queue))
-    printf("yes\n");
-  else
-    printf("no\n");
+  test_assert(&res, "Poping 1/3", *(int*)(queue_dequeue(&queue)->val) == 0);
+  test_assert(&res, "Poping 2/3", *(int*)(queue_dequeue(&queue)->val) == 1);
+  test_assert(&res, "Poping 3/3", *(int*)(queue_dequeue(&queue)->val) == 2);
+  test_assert(&res, "Poping while empty queue", queue_dequeue(&queue) == NULL);
+  test_assert(&res, "Queue size after poping", queue_size(&queue) == 0);
+  test_assert(&res, "Queue is empty after poping", queue_isEmpty(&queue));
 
-  printf("Emptying queue...\n");
-  printf("Node0 poped : value = %d (should be 0)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node1 poped : value = %d (should be 1)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node2 poped : value = %d (should be 2)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node3 poped : value = %d (should be 3)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node4 poped : value = %d (should be 4)\n", *(int*)(queue_dequeue(&queue)->val));
-  printf("Node5 poped : value = %d (should be 5)\n", *(int*)(queue_dequeue(&queue)->val));
-
-  printf("Poping while empty (should return NULL) : ");
-  if (queue_dequeue(&queue) == NULL)
-    printf("NULL\n");
-  else
-    printf("NOT NULL\n");
-
-  printf("Size queue (should be 0) : %u\n", queue_size(&queue));
-
-  printf("Is queue empty (should be yes) : ");
-  if (queue_isEmpty(&queue))
-    printf("yes\n");
-  else
-    printf("no\n");
-
-  printf("Freeing node memory...\n");
   free(node0);
   free(node1);
   free(node2);
@@ -122,7 +78,5 @@ int main()
   free(node4);
   free(node5);
 
-  printf("End.\n");
-
-  return 0;
+  return res;
 }
