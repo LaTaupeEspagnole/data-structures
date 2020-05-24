@@ -10,7 +10,7 @@
 
 struct test_rate test()
 {
-  int number_section = 1;
+  int number_section = 2;
   struct test_section section_tab[number_section];
 
   /* Add your test section here */
@@ -19,7 +19,10 @@ struct test_rate test()
   section_tab[0].rate.number_test = 0;
   section_tab[0].rate.number_success = 0;
 
-//section_tab[1] = test_section;
+  section_tab[1].name = "Stack";
+  section_tab[1].test_function = test_stack;
+  section_tab[1].rate.number_test = 0;
+  section_tab[1].rate.number_success = 0;
   /* END */
 
   struct test_rate res = {.number_test = 0, .number_success = 0};

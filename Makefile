@@ -8,7 +8,9 @@ OBJS_LIST= list.o
 OBJS_STACK= stack.o
 OBJS_ALLOC_LIST_STRING= alloc-list-string.o
 
-OBJS_TEST= test-suite.o test-queue.o
+OBJS_TEST= test-suite.o \
+		test-queue.o \
+		test-stack.o
 
 
 all: test
