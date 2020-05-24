@@ -10,7 +10,7 @@
 
 struct test_rate test()
 {
-  int number_section = 2;
+  int number_section = 3;
   struct test_section section_tab[number_section];
 
   /* Add your test section here */
@@ -23,6 +23,11 @@ struct test_rate test()
   section_tab[1].test_function = test_stack;
   section_tab[1].rate.number_test = 0;
   section_tab[1].rate.number_success = 0;
+
+  section_tab[2].name = "List";
+  section_tab[2].test_function = test_list;
+  section_tab[2].rate.number_test = 0;
+  section_tab[2].rate.number_success = 0;
   /* END */
 
   struct test_rate res = {.number_test = 0, .number_success = 0};
@@ -36,8 +41,8 @@ struct test_rate test()
     section_tab[i].rate.number_test = ret.number_test;
     section_tab[i].rate.number_success = ret.number_success;
     printf("\n  RESULTS (test / success / rate) : %u / %u / ", \
-      res.number_test, res.number_success);
-    test_print_rate(res.number_test, res.number_success);
+      ret.number_test, ret.number_success);
+    test_print_rate(ret.number_test, ret.number_success);
     printf("\n\n");
   }
 

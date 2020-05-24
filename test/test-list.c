@@ -2,8 +2,12 @@
 
 #include "list.h"
 
-int main()
+#include "test-suite.h"
+
+struct test_rate test_list()
 {
+  struct test_rate res = {0, 0};
+
   struct list_node node0;
   struct list_node node1;
   struct list_node node2;
@@ -19,108 +23,62 @@ int main()
   node2.val = (void*)&two;
   node3.val = (void*)&three;
 
-  printf("Inisialising list...\n");
   struct list list;
   list_init(&list);
 
-  printf("Size of the list (should be 0) : %u\n", list_size(&list));
-  printf("Is the list empty ? (should be yes) : ");
-  if (list_isEmpty(&list))
-    printf("yes\n");
-  else
-    printf("no\n");
+  test_assert(&res, "Size of a empty list", list_size(&list) == 0);
+  test_assert(&res, "Is list empty while empty", list_isEmpty(&list));
 
-  printf("Appending list...\n");
   list_append(&list, &node0);
   list_append(&list, &node1);
   list_append(&list, &node2);
   list_append(&list, &node3);
 
-  printf("Size of the list (should be 4) : %u\n", list_size(&list));
-  printf("Is the list empty ? (should be no) : ");
-  if (list_isEmpty(&list))
-    printf("yes\n");
-  else
-    printf("no\n");
+  test_assert(&res, "Size of list after append", list_size(&list) == 4);
+  test_assert(&res, "Is list empty after append", !list_isEmpty(&list));
+  test_assert(&res, "Rightpoping list 1/4", *(int*)(list_popright(&list)->val) == 3);
+  test_assert(&res, "Rightpoping list 2/4", *(int*)(list_popright(&list)->val) == 2);
+  test_assert(&res, "Rightpoping list 3/4", *(int*)(list_popright(&list)->val) == 1);
+  test_assert(&res, "Rightpoping list 4/4", *(int*)(list_popright(&list)->val) == 0);
+  test_assert(&res, "Rightpoping while empty list", list_popright(&list) == NULL);
+  test_assert(&res, "Size of list after rightpoping all nodes", list_size(&list) == 0);
+  test_assert(&res, "Is list empty after rightpoping all nodes", list_isEmpty(&list));
 
-  printf("rightpoping list (should be 3) : %d\n", *(int*)(list_popright(&list)->val));
-  printf("rightpoping list (should be 2) : %d\n", *(int*)(list_popright(&list)->val));
-  printf("rightpoping list (should be 1) : %d\n", *(int*)(list_popright(&list)->val));
-  printf("rightpoping list (should be 0) : %d\n", *(int*)(list_popright(&list)->val));
-  printf("rightpoping list (should be NULL) : ");
-  if (list_popright(&list) == NULL)
-    printf("NULL\n");
-  else
-    printf("NOT NULL\n");
-
-  printf("Size of the list (should be 0) : %u\n", list_size(&list));
-  printf("Is the list empty ? (should be yes) : ");
-  if (list_isEmpty(&list))
-    printf("yes\n");
-  else
-    printf("no\n");
-
-  printf("Prepending list...\n");
   list_prepend(&list, &node0);
   list_prepend(&list, &node1);
   list_prepend(&list, &node2);
   list_prepend(&list, &node3);
 
-  printf("Size of the list (should be 4) : %u\n", list_size(&list));
-  printf("Is the list empty ? (should be no) : ");
-  if (list_isEmpty(&list))
-    printf("yes\n");
-  else
-    printf("no\n");
+  test_assert(&res, "Size of list after prepend", list_size(&list) == 4);
+  test_assert(&res, "Is list empty after prepend", !list_isEmpty(&list));
+  test_assert(&res, "Leftpoping list 1/4", *(int*)(list_popleft(&list)->val) == 3);
+  test_assert(&res, "Leftpoping list 2/4", *(int*)(list_popleft(&list)->val) == 2);
+  test_assert(&res, "Leftpoping list 3/4", *(int*)(list_popleft(&list)->val) == 1);
+  test_assert(&res, "Leftpoping list 4/4", *(int*)(list_popleft(&list)->val) == 0);
+  test_assert(&res, "Leftpoping while empty list", list_popright(&list) == NULL);
 
-  printf("leftpoping list (should be 3) : %d\n", *(int*)(list_popleft(&list)->val));
-  printf("leftpoping list (should be 2) : %d\n", *(int*)(list_popleft(&list)->val));
-  printf("leftpoping list (should be 1) : %d\n", *(int*)(list_popleft(&list)->val));
-  printf("leftpoping list (should be 0) : %d\n", *(int*)(list_popleft(&list)->val));
-  printf("leftpoping list (should be NULL) : ");
-  if (list_popright(&list) == NULL)
-    printf("NULL\n");
-  else
-    printf("NOT NULL\n");
+  test_assert(&res, "Size after leftpoping all nodes", list_size(&list) == 0);
+  test_assert(&res, "Is list empty after leftpoping all nodes", list_isEmpty(&list));
 
-  printf("Size of the list (should be 0) : %u\n", list_size(&list));
-  printf("Is the list empty ? (should be yes) : ");
-  if (list_isEmpty(&list))
-    printf("yes\n");
-  else
-    printf("no\n");
-
-  printf("Inserting in list...\n");
   list_insert(&list, &node0, 0);
   list_insert(&list, &node1, 0);
   list_insert(&list, &node2, 1);
   list_insert(&list, &node3, 3);
 
-  printf("Size of the list (should be 4) : %u\n", list_size(&list));
-  printf("Is the list empty ? (should be no) : ");
-  if (list_isEmpty(&list))
-    printf("yes\n");
-  else
-    printf("no\n");
+  test_assert(&res, "Size list after inserting", list_size(&list) == 4);
+  test_assert(&res, "Is list empty after inserting", !list_isEmpty(&list));
+  test_assert(&res, "Getting in list 1/4", *(int*)(list_get(&list, 0)->val) == 1);
+  test_assert(&res, "Getting in list 2/4", *(int*)(list_get(&list, 1)->val) == 2);
+  test_assert(&res, "Getting in list 3/4", *(int*)(list_get(&list, 2)->val) == 0);
+  test_assert(&res, "Getting in list 4/4", *(int*)(list_get(&list, 3)->val) == 3);
 
-  printf("getting at index 0 (should be 1) : %d\n", *(int*)(list_get(&list, 0)->val));
-  printf("getting at index 0 (should be 2) : %d\n", *(int*)(list_get(&list, 1)->val));
-  printf("getting at index 0 (should be 0) : %d\n", *(int*)(list_get(&list, 2)->val));
-  printf("getting at index 0 (should be 3) : %d\n", *(int*)(list_get(&list, 3)->val));
+  test_assert(&res, "Size of list after insert", list_size(&list) == 4);
+  test_assert(&res, "Removing in list 1/4", *(int*)(list_remove(&list, 0)->val) == 1);
+  test_assert(&res, "Removing in list 2/4", *(int*)(list_remove(&list, 1)->val) == 0);
+  test_assert(&res, "Removing in list 3/4", *(int*)(list_remove(&list, 1)->val) == 3);
+  test_assert(&res, "Removing in list 4/4", *(int*)(list_remove(&list, 0)->val) == 2);
+  test_assert(&res, "Size of list after removing", list_size(&list) == 0);
+  test_assert(&res, "Is list empty after removing", list_isEmpty(&list));
 
-  printf("Size of the list (should be 4) : %u\n", list_size(&list));
-
-  printf("removing list index 0 (should be 1) : %d\n", *(int*)(list_remove(&list, 0)->val));
-  printf("removing list index 1 (should be 0) : %d\n", *(int*)(list_remove(&list, 1)->val));
-  printf("removing list index 1 (should be 3) : %d\n", *(int*)(list_remove(&list, 1)->val));
-  printf("removing list index 0 (should be 2) : %d\n", *(int*)(list_remove(&list, 0)->val));
-
-  printf("Size of the list (should be 0) : %u\n", list_size(&list));
-  printf("Is the list empty ? (should be yes) : ");
-  if (list_isEmpty(&list))
-    printf("yes\n");
-  else
-    printf("no\n");
-
-  return 0;
+  return res;
 }

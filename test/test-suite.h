@@ -20,3 +20,4 @@ void test_print_rate(unsigned tests, unsigned succes);
 /* Section function */
 struct test_rate test_queue(void);
 struct test_rate test_stack(void);
+struct test_rate test_list(void);
