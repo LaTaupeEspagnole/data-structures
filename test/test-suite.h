@@ -21,3 +21,4 @@ void test_print_rate(unsigned tests, unsigned succes);
 struct test_rate test_queue(void);
 struct test_rate test_stack(void);
 struct test_rate test_list(void);
+struct test_rate test_list_string(void);

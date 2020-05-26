@@ -11,7 +11,8 @@ OBJS_ALLOC_LIST_STRING= alloc-list-string.o
 OBJS_TEST= test-suite.o \
 		test-queue.o \
 		test-stack.o \
-		test-list.o
+		test-list.o \
+		test-alloc-list-string.o
 
 
 all: test
