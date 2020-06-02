@@ -63,7 +63,7 @@ struct test_rate test()
     printf("\n");
   }
 
-  printf("TOTAL                   : %4u / %4u / ", \
+  printf("\nTOTAL                   : %4u / %4u / ", \
     res.number_test, res.number_success);
   test_print_rate(res.number_test, res.number_success);
   printf("\n");

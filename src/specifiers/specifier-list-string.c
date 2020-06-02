@@ -1,10 +1,10 @@
-#include "alloc-list-string.h"
+#include "specifier-list-string.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-struct list_node* alloc_list_string_node(const char* str)
+struct list_node* list_string_alloc_node(const char* str)
 {
   if (!str)
     return NULL;
@@ -31,7 +31,7 @@ struct list_node* alloc_list_string_node(const char* str)
   return node;
 }
 
-void free_list_string_node(struct list_node* node)
+void list_string_free_node(struct list_node* node)
 {
   if (!node)
     return;
@@ -42,10 +42,15 @@ void free_list_string_node(struct list_node* node)
   free(node);
 }
 
-char* read_list_string_node(struct list_node* node)
+char* list_string_read_node(struct list_node* node)
 {
   if (!node || !node->val)
     return NULL;
 
   return (char*)node->val;
+}
+
+int list_string_equal(void* left, void* right)
+{
+  return strcmp((char*)left, (char*)right);
 }

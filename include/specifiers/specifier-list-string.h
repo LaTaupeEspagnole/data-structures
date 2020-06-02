@@ -3,12 +3,12 @@
 #include "list.h"
 
 /**
- * \file alloc-list-string.h
- * \brief List data structure allocator for string values
+ * \file specifier-list-string.h
+ * \brief List data structure specifier for string values
  * \author Sébastien Goubeau (sebastien.goubeau@protonmail.com)
  *
- * Containes all the functions to allocate a list node, free it and read a
- * string from it.
+ * Containes all the functions to allocate a list node, free it, read a string
+ * from it or compare it.
  */
 
 /**
@@ -19,7 +19,7 @@
  * There are two allocation here, one for the list_node structure and one for
  * the str argument.
  */
-struct list_node* alloc_list_string_node(const char* str);
+struct list_node* list_string_alloc_node(const char* str);
 
 /**
  * \brief Free a string node
@@ -28,7 +28,7 @@ struct list_node* alloc_list_string_node(const char* str);
  * There are two free done here, one for the list_node structure and one for
  * the value (string) of the node.
  */
-void free_list_string_node(struct list_node* node);
+void list_string_free_node(struct list_node* node);
 
 /**
  * \brief Reads the string value in a string node
@@ -37,4 +37,6 @@ void free_list_string_node(struct list_node* node);
  *
  * The pointer returned is from the node it self, no copy is done here.
  */
-char* read_list_string_node(struct list_node* node);
+char* list_string_read_node(struct list_node* node);
+
+int list_string_equal(void* left, void* right);

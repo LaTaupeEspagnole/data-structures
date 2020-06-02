@@ -1,18 +1,21 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror -pedantic -std=c99 -Iinclude/
+CFLAGS=-Wall -Wextra -Werror -pedantic -std=c99 -O3\
+	-Iinclude/ \
+	-Iinclude/data-structures/ \
+	-Iinclude/specifiers/
 
-VPATH=src/:test/
+VPATH=src/:src/data-structures/:src/specifiers:test/
 
 OBJS_QUEUE= queue.o
 OBJS_LIST= list.o
 OBJS_STACK= stack.o
-OBJS_ALLOC_LIST_STRING= alloc-list-string.o
+OBJS_ALLOC_LIST_STRING= specifier-list-string.o
 
 OBJS_TEST= test-suite.o \
 		test-queue.o \
 		test-stack.o \
 		test-list.o \
-		test-alloc-list-string.o
+		test-specifier-list-string.o
 
 
 all: test
@@ -27,9 +30,6 @@ test-suite: ${OBJS_TEST} ${OBJS_QUEUE} \
 		${OBJS_LIST} \
 		${OBJS_STACK} \
 		${OBJS_ALLOC_LIST_STRING}
-
-test: test-queue test-list test-stack test-alloc-list-string
-
 
 clean:
 	${RM} ${OBJS_QUEUE}
