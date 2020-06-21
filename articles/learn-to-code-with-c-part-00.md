@@ -5,7 +5,7 @@ keywords:   [programming, linux, c, learn, code]
 date:       '20/06/2020 00h46'
 ---
 
-This is my first article on a project important for me : transmiting basics of
+This is my first article on an important project for me : transmiting basics of
 algorithmics and programming using C. Data structures and algorithms are major
 in computer science and helps understanding programming languages. Knowing the
 pros and cons of the basic data structures makes you able te build more
@@ -44,8 +44,15 @@ that reson all and every source of this project will be grouped in a single Git
 repository. Any one will be able to propose changes over the course. The
 processe of commiting updates will be specified on an other article.
 
-**Here is the
-[Git project](https://github.com/LaTaupeEspagnole/data-structures)**
+### Useful links
+* Here is the
+**[Git repository](https://github.com/LaTaupeEspagnole/data-structures)**
+of the project.
+* Manifesto of the project (*not yet made*)
+
+### Liste of the project's articles
+* Learn to code with C - Part 0
+* ...
 
 
 
