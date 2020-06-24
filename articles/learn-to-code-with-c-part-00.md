@@ -1,8 +1,8 @@
 ---
-title:      'Learn to code with C - Part 0'
-author:     'LaTaupe'
+title:      'Learn to code with C <br> Part 0'
+author:     'Sébastien Goubeau'
 keywords:   [programming, linux, c, learn, code]
-date:       '20/06/2020 00h46'
+date:       'Last Update : 25/06/2020 01h17'
 ---
 
 This is my first article on an important project for me : transmiting basics of
