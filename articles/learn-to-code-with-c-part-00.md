@@ -52,7 +52,7 @@ of the project.
 
 ### Liste of the project's articles
 * Learn to code with C - Part 0
-* [Learn to code with C - Part 1 - Manifesto](learn-to-code-with-c-part-01-manifesto.html)
+* [Learn to code with C - Part 1 - Manifesto](/articles/data-structures/articles/learn-to-code-with-c-part-01-manifesto.html)
 
 
 
